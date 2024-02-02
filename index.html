@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Video Subtitle Generator</title>
+</head>
+<body>
+    <h1>Tamil Video Subtitle Generator</h1>
+    
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <label for="file">Upload a video:</label>
+        <input type="file" name="file" id="file" accept=".mp4,.avi,.mkv">
+        <button type="submit">Generate Subtitles</button>
+    </form>
+    
+    {% if video_path %}
+    <video controls width="640">
+        <source src="{{ video_path }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <h2>Generated Subtitles:</h2>
+    <ul>
+        {% for subtitle in subtitles %}
+        <li>{{ subtitle }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
